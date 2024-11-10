@@ -52,12 +52,34 @@
         }
     </style>
     <script>
-        // Function to display the warning message after a delay
         window.onload = function() {
             setTimeout(function() {
                 document.getElementById("warning-message").style.display = "block";
-            }, 3000); // 3000 milliseconds = 3 seconds
+            }, 3000); // 3 seconds delay
+
+            // Initialize updates for each server card individually
+            document.querySelectorAll('.server-card').forEach((serverCard, index) => {
+                setInterval(() => {
+                    updateServerValues(serverCard);
+                }, getRandomInterval());
+            });
         };
+
+        // Function to get a random interval between 2-5 seconds
+        function getRandomInterval() {
+            return Math.floor(Math.random() * 3000) + 2000; // Random between 2000 and 5000 ms
+        }
+
+        // Function to update server values dynamically
+        function updateServerValues(serverCard) {
+            // Generate random values for CPU usage and temperature
+            const cpuUsage = Math.floor(Math.random() * 50) + 50; // Random between 50-100%
+            const temperature = Math.floor(Math.random() * 15) + 55; // Random between 55-70°C
+
+            // Update the displayed values
+            serverCard.querySelector('.cpu-usage').textContent = `Využití CPU: ${cpuUsage}%`;
+            serverCard.querySelector('.temperature').textContent = `Teplota: ${temperature}°C`;
+        }
     </script>
 </head>
 <body>
@@ -75,27 +97,27 @@
         <!-- Global Servers Section -->
         <h2>Globální Servery</h2>
         <div class="server-section">
-            <!-- Example Server Cards -->
+            <!-- Example Server Cards with dynamic classes for easy updates -->
             <div class="server-card">
                 <h3>Server: New York, USA</h3>
                 <p>IP adresa: 192.168.1.10</p>
                 <p>Status: <strong>Online</strong></p>
-                <p>Využití CPU: 55%</p>
-                <p>Teplota: 67°C</p>
+                <p class="cpu-usage">Využití CPU: 55%</p>
+                <p class="temperature">Teplota: 67°C</p>
             </div>
             <div class="server-card">
                 <h3>Server: Londýn, Velká Británie</h3>
                 <p>IP adresa: 192.168.2.15</p>
                 <p>Status: <strong>Online</strong></p>
-                <p>Využití CPU: 65%</p>
-                <p>Teplota: 64°C</p>
+                <p class="cpu-usage">Využití CPU: 65%</p>
+                <p class="temperature">Teplota: 64°C</p>
             </div>
             <div class="server-card">
                 <h3>Server: Tokio, Japonsko</h3>
                 <p>IP adresa: 192.168.3.20</p>
                 <p>Status: <strong>Online</strong></p>
-                <p>Využití CPU: 45%</p>
-                <p>Teplota: 60°C</p>
+                <p class="cpu-usage">Využití CPU: 45%</p>
+                <p class="temperature">Teplota: 60°C</p>
             </div>
 
             <!-- Highlighted Server Card for Cayman Islands -->
@@ -104,8 +126,8 @@
                 <p>Lokace: Kajmanské Ostrovy</p>
                 <p>IP adresa: 192.168.4.25</p>
                 <p>Status: <strong>Online</strong></p>
-                <p>Využití CPU: 70%</p>
-                <p>Teplota: 62°C</p>
+                <p class="cpu-usage">Využití CPU: 70%</p>
+                <p class="temperature">Teplota: 62°C</p>
                 <p><strong>Poznámka:</strong> Klíčové úložiště datových informací pro celý region.</p>
             </div>
         </div>
