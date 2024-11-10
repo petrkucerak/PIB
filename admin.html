@@ -179,6 +179,201 @@
           </tr>
         </table>
       </section>
+
+      <!-- Security Audit Section -->
+      <section id="security-audit">
+        <h2>Bezpečnostní audit</h2>
+        <p>
+          Výsledky nedávného auditu zabezpečení systému, který odhalil několik
+          závažných problémů.
+        </p>
+        <table class="info-table">
+          <tr>
+            <th>Problém</th>
+            <th>Popis</th>
+            <th>Doporučení</th>
+          </tr>
+          <tr>
+            <td>Slabé šifrování hesel</td>
+            <td>
+              Hesla jsou ukládána pomocí zastaralého algoritmu SHA-1, který je
+              náchylný k útokům hrubou silou a snadno prolomitelný.
+            </td>
+            <td>Přejít na bcrypt nebo Argon2 pro šifrování hesel.</td>
+          </tr>
+          <tr>
+            <td>Nedostatečné zabezpečení API</td>
+            <td>
+              Externí API nemá omezený přístup a nedostatečně ověřuje vstupní
+              data, což umožňuje útoky SQL Injection.
+            </td>
+            <td>
+              Zabezpečit API pomocí OAuth2 a nasadit přísné ověřování vstupu.
+            </td>
+          </tr>
+          <tr>
+            <td>Zastaralý firewall</td>
+            <td>
+              Firewall nebyl aktualizován po dobu 3 let, což umožnilo
+              neautorizovaný přístup k databázovým serverům.
+            </td>
+            <td>
+              Okamžitě aktualizovat firewall a nastavit pravidelné bezpečnostní
+              kontroly.
+            </td>
+          </tr>
+          <tr>
+            <td>Nešifrované připojení k databázi</td>
+            <td>
+              Interní databáze přijímá nešifrovaná připojení, což umožňuje
+              potenciálním útočníkům zachytit citlivá data.
+            </td>
+            <td>Nasadit šifrovaná připojení pomocí TLS.</td>
+          </tr>
+        </table>
+      </section>
+      <!-- Additional Security Problems Section -->
+      <section id="additional-security-problems">
+        <h2>Další bezpečnostní problémy</h2>
+        <p>
+          Několik reálných scénářů možných bezpečnostních útoků, kterým je třeba
+          věnovat pozornost.
+        </p>
+        <table class="info-table">
+          <tr>
+            <th>Problém</th>
+            <th>Popis</th>
+            <th>Doporučení</th>
+          </tr>
+          <tr>
+            <td>Přístup přes IoT zařízení</td>
+            <td>
+              Nezabezpečená zařízení Internetu věcí (IoT), jako jsou chytré
+              termostaty, osvětlení nebo kávovary, mohou poskytnout vstupní bod
+              do sítě, pokud nejsou dostatečně chráněna.
+            </td>
+            <td>
+              Zajistěte, aby byla všechna IoT zařízení izolována na samostatné
+              síti, pravidelně aktualizována a chráněna silným ověřováním.
+            </td>
+          </tr>
+          <tr>
+            <td>Nedostatečné šifrování dat v úložišti</td>
+            <td>
+              Citlivá data uložená v databázích, jako jsou údaje o zákaznících a
+              finanční záznamy, nejsou šifrována, což umožňuje neautorizovaným
+              uživatelům s přístupem k databázi prohlížet syrová data.
+            </td>
+            <td>
+              Implementujte šifrování pro všechna citlivá data uložená na
+              serverech a nastavte přístupové kontroly, aby se minimalizovala
+              možná expozice.
+            </td>
+          </tr>
+          <tr>
+            <td>Slabé přístupové kontroly na sdílených discích</td>
+            <td>
+              Citlivé dokumenty a soubory uložené na sdílených síťových discích
+              nemají správně nastavená omezení přístupu, což potenciálně
+              umožňuje neautorizovaným pracovníkům nebo třetím stranám přístup k
+              důvěrným informacím.
+            </td>
+            <td>
+              Zajistěte přístupové kontroly založené na rolích, aby pouze
+              oprávněný personál mohl přistupovat k citlivým souborům.
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Zranitelnost vůči phishingu kvůli nedostatečnému školení
+              zaměstnanců
+            </td>
+            <td>
+              Mnoho zaměstnanců není vyškoleno k rozpoznání phishingových
+              pokusů, což organizaci činí zranitelnou vůči útokům
+              prostřednictvím sociálního inženýrství.
+            </td>
+            <td>
+              Provádějte pravidelná školení a simulace phishingu pro všechny
+              zaměstnance.
+            </td>
+          </tr>
+          <tr>
+            <td>Přístup zadními vrátky přes zastaralé systémy</td>
+            <td>
+              V organizaci jsou používány staré systémy, které nejsou pravidelně
+              aktualizovány, což zvyšuje riziko, že je útočníci využijí jako
+              skrytý vstupní bod do sítě.
+            </td>
+            <td>
+              Identifikujte a nahraďte nebo bezpečně izolujte staré systémy a
+              implementujte záplaty, pokud je to možné.
+            </td>
+          </tr>
+          <tr>
+            <td>Útoky prostřednictvím USB zařízení</td>
+            <td>
+              Nedostatečné omezení používání USB zařízení na kancelářských
+              počítačích zvyšuje riziko infekce malwarem z neautorizovaných USB
+              zařízení.
+            </td>
+            <td>
+              Nastavte politiky omezující používání USB zařízení pouze na
+              autorizované a implementujte ochranný software na koncových
+              zařízeních.
+            </td>
+          </tr>
+          <tr>
+            <td>Nedostatečné zabezpečení vzdáleného přístupu</td>
+            <td>
+              Přístup k systémům a datům na dálku závisí pouze na uživatelském
+              jménu a heslu, což umožňuje jejich kompromitaci útoky hrubou
+              silou.
+            </td>
+            <td>
+              Implementujte dvoufaktorové ověřování (MFA) pro všechny přístupové
+              body na dálku.
+            </td>
+          </tr>
+          <tr>
+            <td>Nezabezpečené zálohovací úložiště</td>
+            <td>
+              Záložní soubory jsou ukládány na nezabezpečeném místě, což je činí
+              zranitelnými vůči krádeži nebo neautorizovanému přístupu.
+            </td>
+            <td>
+              Zajistěte záložní úložiště pomocí šifrování a přísných
+              přístupových kontrol a ukládejte zálohy na jiném místě než
+              primární data.
+            </td>
+          </tr>
+        </table>
+      </section>
+      <section id="audit-contact">
+        <h2>Kontakt na auditora</h2>
+        <p>
+          V případě jakýchkoliv dotazů ohledně výsledků auditu nebo pro další
+          informace o zabezpečení, prosím kontaktujte:
+        </p>
+        <table class="info-table">
+          <tr>
+            <th>Kontakt</th>
+            <th>Informace</th>
+          </tr>
+          <tr>
+            <td>Jméno</td>
+            <td>Ing. Filip Mayer</td>
+          </tr>
+          <tr>
+            <td>Pozice</td>
+            <td>Bezpečnostní auditor</td>
+          </tr>
+          <tr>
+            <td>Email</td>
+            <td>filip.mayer@security-audit.cz</td>
+          </tr>
+        </table>
+      </section>
     </main>
   </body>
 </html>
